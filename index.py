@@ -10,7 +10,7 @@ def is_int(str):
 
 def delChain(index, count, list):
     for j in range(count):
-        list.pop(index-count)
+        list.pop(index - count)
 
 
 def keyboardInput(list):
