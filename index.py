@@ -72,6 +72,7 @@ while (True):
 
 print(list)
 
+# Считается количесво четных элементов подрят, если меньше 3, то элементы удаляются
 while(i < len(list)):
     if(list[i] % 2 == 0):
         count += 1
@@ -81,7 +82,7 @@ while(i < len(list)):
             i -= count
         count = 0
     i += 1
-if (count < 3):
+if (count < 3): # Проверка последней цепочки
     delChain(i, count, list)
 
 print(list)
