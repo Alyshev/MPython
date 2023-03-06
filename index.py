@@ -1,16 +1,54 @@
-a = [4,3,4,2,1,2,4,6]
+from random import randint
 
-count = int(1);
+def delChain(index, count, list):
+    for j in range(count):
+        list.pop(index-count)
+
+
+def keyboardInput(list):
+    print("Введите количество элементов:", end = " ")
+    count = int(input())
+    print("Введите " + str(count) + " элементов: ", end = " ")
+    for j in range(count):
+        list.append(int(input()))
+
+
+def automaticGeneration(list):
+    print("Введите количество элементов:", end = " ")
+    count = int(input())
+    for j in range(count):
+        list.append(randint(0,9))
+
+
+list = []
+count = int(0);
 i = int(0)
-print(a)
 
-while(i < len(a)):
-    if(a[i] % 2 == 0 and count < 3):
-        a.pop(i)
+print("Ввод с клавиатуры - 1\nАвтоматическая генерация - 2")
+print("Выберете путь:", end = " ")
+while (True):
+    n = int(input())
+    if (n == 1):
+        keyboardInput(list)
+        break
+    elif (n == 2):
+        automaticGeneration(list)
+        break
+    else:
+        print("Ошибка ввода! Попробуйте снова:", end = " ")
+
+print(list)
+
+while(i < len(list)):
+    if(list[i] % 2 == 0):
         count += 1
     else:
-        i += 1
-        count = 1
+        if (count < 3):
+            delChain(i, count, list)
+            i -= count
+        count = 0
+    i += 1
+if (count < 3):
+    delChain(i, count, list)
 
-
-print(a)
+print(list)
