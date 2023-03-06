@@ -1,16 +1,16 @@
 a = [4,3,4,2,1,2,4,6]
 
-count = int(0);
-sizeL = len(a)
+count = int(1);
+i = int(0)
 print(a)
 
-for i in range(sizeL):
+while(i < len(a)):
     if(a[i] % 2 == 0 and count < 3):
         a.pop(i)
-        i -= 1
         count += 1
     else:
-        count = 0
-        
+        i += 1
+        count = 1
+
 
 print(a)
