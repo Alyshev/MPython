@@ -1,5 +1,5 @@
 from random import randint
-# import numpy as np
+import numpy as np
 
 highestValue = 0
 n = int(input())
