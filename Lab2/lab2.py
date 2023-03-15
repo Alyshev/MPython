@@ -1,33 +1,45 @@
 from random import randint
 import numpy as np
 
+class MatrixA():
+    def __init__(self):
+        self.highestValue = 0
+        print("Количество строк: ", end = "")
+        self.n = int(input())
+        print("Количество столбцов: ", end = "")    
+        self.m = int(input())
+        self.a = np.zeros((self.n, self.m), int) # Матрица заполненная нулями
 
-highestValue = 0
-print("Количество строк: ", end = "")
-n = int(input())
-print("Количество столбцов: ", end = "")
-m = int(input())
+    def matrixFilling(self):
+        for i in range(self.n):
+            for j in range(self.m):
+                self.a[i][j] = randint(0, 10)
 
-arr = np.zeros((n, m), int) # Массив заполненный нулями
+    def printMatrix(self):
+        print("исходные данные:") 
+        print(self.a)
 
-for i in range(n):
-    for j in range(m):
-        arr[i][j] = randint(0, 10)
+    def findHighestValue(self):
+        for i in range(self.n):
+            self.tempHighestValue = self.a[i].mean()
+            if (self.tempHighestValue > self.highestValue):
+                self.highestValue = self.tempHighestValue
 
-print("исходные данные:") 
-print(arr)
+    def printSearchResults(self):
+        print("Результат обработки: " + str(self.highestValue))
 
-# Нахождение максимального среднего значения из каждой строки матрицы
-for i in range(n):
-    tempHighestValue = arr[i].mean()
-    if (tempHighestValue > highestValue):
-        highestValue = tempHighestValue
 
-print("Результат обработки: " + str(highestValue))
+matrix = MatrixA()
+matrix.matrixFilling()
+matrix.findHighestValue()
+matrix.printMatrix()
+matrix.printSearchResults()
+
+
 
 # Работа с файлом
 file = open("Lab2/result.txt", "w")
 file.write("исходные данные:\n") 
-file.write(str(arr))
-file.write("\nРезультат обработки: " + str(highestValue))
+file.write(str(matrix.a))
+file.write("\nРезультат обработки: " + str(matrix.highestValue))
 file.close()
