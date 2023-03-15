@@ -24,22 +24,22 @@ class MatrixA():
             self.tempHighestValue = self.a[i].mean()
             if (self.tempHighestValue > self.highestValue):
                 self.highestValue = self.tempHighestValue
+        return self.highestValue
 
     def printSearchResults(self):
         print("Результат обработки: " + str(self.highestValue))
 
 
+
 matrix = MatrixA()
 matrix.matrixFilling()
-matrix.findHighestValue()
+highestValue = matrix.findHighestValue()
 matrix.printMatrix()
 matrix.printSearchResults()
-
-
 
 # Работа с файлом
 file = open("Lab2/result.txt", "w")
 file.write("исходные данные:\n") 
 file.write(str(matrix.a))
-file.write("\nРезультат обработки: " + str(matrix.highestValue))
+file.write("\nРезультат обработки: " + str(highestValue))
 file.close()
