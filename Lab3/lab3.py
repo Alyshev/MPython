@@ -1,7 +1,8 @@
-import os
- 
-directory = 'Lab2'
- 
-files = [file for file in os.listdir(directory) if os.path.isfile(f'{directory}/{file}')]
- 
-print(len(files))
+from pathlib import Path
+
+folder_name = input("folder name:")
+folder = Path(folder_name)
+if folder.is_dir():
+    folder_count = len([1 for file in folder.iterdir()])
+
+print(f"В папке {folder_name} есть {folder_count} объектов")
