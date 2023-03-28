@@ -16,7 +16,7 @@ class Dictionaries():
         self.employees = {}
         
     def fillTheDictionary(self):
-        with open('Lab3\R.csv', 'r', newline='') as csvfile:
+        with open('Lab3\R.csv', 'r', newline='', encoding='utf-8') as csvfile:
             spamreader = csv.reader(csvfile, delimiter=';')
             for number, fullName, position, seniority_years  in spamreader:
                 self.employees[int(number)] = [str(fullName), str(position), int(seniority_years)]
@@ -37,7 +37,7 @@ class Dictionaries():
         self.employees = sorted_employees
 
     def loadDictionaryToFile(self):
-        with open('Lab3\R.csv', 'w') as csvfile:
+        with open('Lab3\R.csv', 'w', encoding='utf-8') as csvfile:
             file_writer = csv.writer(csvfile, delimiter = ";", lineterminator="\r")
             for ind, coun in self.employees.items():
                 file_writer.writerow([str(ind), str(coun[0]), str(coun[1]), str(coun[2])])
