@@ -14,12 +14,30 @@ class Files():
 class Dictionaries():
     def __init__(self):
         self.employees = {}
-        
+        self.temp = {}
+        self.point = 0
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.point >= len(self.employees.items()):
+            self.pointer = 0
+            raise StopIteration
+        else:
+            self.point += 1
+            return self.employees[self.temp[self.point - 1]]
+
+
+
     def fillTheDictionary(self):
+        i = 0
         with open('Lab3\R.csv', 'r', newline='', encoding='utf-8') as csvfile:
             spamreader = csv.reader(csvfile, delimiter=';')
             for number, fullName, position, seniority_years  in spamreader:
                 self.employees[int(number)] = [str(fullName), str(position), int(seniority_years)]
+                self.temp[i] = int(number)
+                i+=1
 
     def returnDictionary(self):
         return self.employees.items()              
@@ -51,8 +69,9 @@ print("")
 dictionary = Dictionaries()
 dictionary.fillTheDictionary()
 
+
 print("неотсортированный словарь:")
-for val in dictionary.returnDictionary():
+for val in iter(dictionary):
     print(val)
 print("")
 
